@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: customer-service
+  profiles:
+    active: dev   // default profile
+  datasource:
+    url: ${DATASOURCE_URL}
+    password: ${DATASOURCE_PASSWORD}
+    username: ${DATASOURCE_USERNAME}
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database: POSTGRESQL
+
+logging:
+  level:
+    root: DEBUG    // Might be changed later
+  file:
+    name: logs/dev-app.log   // logging file
+
+server:
+  port: 8080
+
