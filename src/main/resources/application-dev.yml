@@ -1,12 +1,10 @@
 spring:
   application:
     name: customer-service
-  profiles:
-    active: dev   // default profile
   datasource:
-    url: ${DATASOURCE_URL}
-    password: ${DATASOURCE_PASSWORD}
-    username: ${DATASOURCE_USERNAME}
+    url: ${DB_URL}
+    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME}
     driver-class-name: org.postgresql.Driver
     platform: postgres
   jpa:
@@ -16,11 +14,11 @@ spring:
     database: POSTGRESQL
 
 logging:
+  config: classpath:configs/logback-spring.xml
   level:
-    root: DEBUG    // Might be changed later
+    root: ERROR
   file:
-    name: logs/dev-app.log   // logging file
+    name: logs/dev-app.log
 
 server:
-  port: 8080
-
+  port: 8081
