@@ -6,9 +6,4 @@ public interface AppConstant {
 
     String CATEGORY_CONTROLLER = BASE_PATH + "categories";
 
-    String ADD = "add";
-    String UPDATE = "update/";
-    String DELETE = "delete/";
-    String GET = "get";
-
 }

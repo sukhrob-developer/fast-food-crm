@@ -2,29 +2,45 @@ package sukhrob.dev.customer_service.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sukhrob.dev.customer_service.payload.CategoryReqDTO;
-import sukhrob.dev.customer_service.payload.CategoryResDTO;
+import sukhrob.dev.customer_service.payload.CategoryRequestDTO;
+import sukhrob.dev.customer_service.payload.CategoryResponseDTO;
+import sukhrob.dev.customer_service.services.CategoryService;
 import sukhrob.dev.customer_service.utils.AppConstant;
 
 import java.util.List;
 
+@RestController
 @RequestMapping(AppConstant.CATEGORY_CONTROLLER)
-public interface CategoryController {
+public class CategoryController {
 
-    @GetMapping(AppConstant.GET + "/{id}")
-    ResponseEntity<CategoryResDTO> get(@PathVariable(name = "id") Long id);
+    private CategoryService categoryService;
 
-    @GetMapping(AppConstant.GET)
-    ResponseEntity<List<CategoryResDTO>> getAll();
+    @GetMapping("/{id}")
+    CategoryResponseDTO get(@PathVariable(name = "id") Long id) {
+        return categoryService.get(id);
+    }
 
-    @PostMapping(AppConstant.ADD)
-    ResponseEntity<CategoryResDTO> add(@RequestBody CategoryReqDTO categoryReqDTO);
+    @GetMapping()
+    List<CategoryResponseDTO> getAll() {
+        return categoryService.getAll();
+    }
 
-    @PutMapping(AppConstant.UPDATE + "{id}")
-    ResponseEntity<CategoryResDTO> update(@PathVariable(name = "id") Long id,
-                                          @RequestBody CategoryReqDTO categoryReqDTO);
+    @PostMapping()
+    CategoryResponseDTO add(@RequestBody CategoryRequestDTO categoryReqDTO) {
+        return categoryService.add(categoryReqDTO);
+    }
 
-    @DeleteMapping(AppConstant.DELETE + "{id}")
-    ResponseEntity<?> delete(@PathVariable(name = "id") Long id);
+    @PutMapping("{id}")
+    CategoryResponseDTO update(
+            @PathVariable(name = "id") Long id,
+            @RequestBody CategoryRequestDTO categoryReqDTO
+    ) {
+        return categoryService.update(id, categoryReqDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> delete(@PathVariable(name = "id") Long id) {
+        return categoryService.delete(id);
+    }
 
 }
