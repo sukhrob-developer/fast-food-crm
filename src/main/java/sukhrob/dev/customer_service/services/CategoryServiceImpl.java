@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryResponseDTO get(Long id) {
         Category category = findById(id);
-        return categoryMapper.mapEntityToDTO(category);
+        return mapperEntityToDTO(category);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
         }
 
         Category category = categoryMapper.mapDTOToEntity(categoryReqDTO);
-        return categoryMapper.mapEntityToDTO(category);
+        return mapperEntityToDTO(category);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CategoryServiceImpl implements CategoryService {
         category.setName(categoryReqDTO.name());
         category.setParentCategoryId(categoryReqDTO.parentCategoryId());
         Category updatedCategory = categoryRepository.save(category);
-        return categoryMapper.mapEntityToDTO(updatedCategory);
+        return mapperEntityToDTO(updatedCategory);
     }
 
     @Override
@@ -73,6 +73,10 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = findById(id);
         categoryRepository.delete(category);
         return ResponseEntity.ok("Successfully deleted!");
+    }
+
+    private CategoryResponseDTO mapperEntityToDTO(Category category) {
+        return categoryMapper.mapEntityToDTO(category);
     }
 
     private Category findById(Long id) {

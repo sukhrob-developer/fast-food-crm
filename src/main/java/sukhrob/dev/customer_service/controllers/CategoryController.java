@@ -5,27 +5,30 @@ import org.springframework.web.bind.annotation.*;
 import sukhrob.dev.customer_service.payload.CategoryRequestDTO;
 import sukhrob.dev.customer_service.payload.CategoryResponseDTO;
 import sukhrob.dev.customer_service.services.CategoryService;
-import sukhrob.dev.customer_service.utils.AppConstant;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(AppConstant.CATEGORY_CONTROLLER)
+@RequestMapping("categories/")
 public class CategoryController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @GetMapping("/{id}")
     CategoryResponseDTO get(@PathVariable(name = "id") Long id) {
         return categoryService.get(id);
     }
 
-    @GetMapping()
+    @GetMapping
     List<CategoryResponseDTO> getAll() {
         return categoryService.getAll();
     }
 
-    @PostMapping()
+    @PostMapping
     CategoryResponseDTO add(@RequestBody CategoryRequestDTO categoryReqDTO) {
         return categoryService.add(categoryReqDTO);
     }

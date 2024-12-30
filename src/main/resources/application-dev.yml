@@ -21,4 +21,6 @@ logging:
     name: logs/dev-app.log
 
 server:
+  servlet:
+    context-path: /api/v1/customers/
   port: 8081
