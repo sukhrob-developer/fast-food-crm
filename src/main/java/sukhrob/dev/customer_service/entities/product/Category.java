@@ -1,4 +1,4 @@
-package sukhrob.dev.customer_service.entities;
+package sukhrob.dev.customer_service.entities.product;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
