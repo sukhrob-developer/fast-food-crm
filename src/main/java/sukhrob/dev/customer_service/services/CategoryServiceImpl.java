@@ -3,6 +3,7 @@ package sukhrob.dev.customer_service.services;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import sukhrob.dev.customer_service.entities.product.Category;
@@ -17,8 +18,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 
-    private final CategoryRepository categoryRepository;
-    private final CategoryMapper categoryMapper;
+    private CategoryRepository categoryRepository;
+    private CategoryMapper categoryMapper;
 
     @Override
     public CategoryResponseDTO get(Long id) {
@@ -44,6 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
         }
 
         Category category = categoryMapper.mapDTOToEntity(categoryReqDTO);
+        categoryRepository.save(category);
         return mapperEntityToDTO(category);
     }
 

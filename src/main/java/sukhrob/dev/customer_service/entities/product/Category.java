@@ -16,12 +16,16 @@ import sukhrob.dev.customer_service.entities.template.AbsEntity;
 @Setter
 @Entity(name = "categories")
 @SQLDelete(sql = "update categories set deleted=true where id = ?")
-@SQLRestriction(value = "deleted=true")
+@SQLRestriction(value = "deleted=false")
 public class Category extends AbsEntity {
 
     @Column(nullable = false, unique = true)
     private String name;
 
     private Long parentCategoryId;
+
+    public Category(String name) {
+        this.name = name;
+    }
 
 }

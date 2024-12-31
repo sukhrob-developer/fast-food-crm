@@ -7,7 +7,8 @@ import sukhrob.dev.customer_service.entities.product.Category;
 import sukhrob.dev.customer_service.payload.CategoryRequestDTO;
 import sukhrob.dev.customer_service.payload.CategoryResponseDTO;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        componentModel = "spring")
 public interface CategoryMapper {
 
     CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
