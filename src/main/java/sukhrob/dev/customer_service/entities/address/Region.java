@@ -2,14 +2,12 @@ package sukhrob.dev.customer_service.entities.address;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 import sukhrob.dev.customer_service.entities.template.AbsEntity;
 
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor

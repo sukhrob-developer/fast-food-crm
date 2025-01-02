@@ -2,9 +2,7 @@ package sukhrob.dev.customer_service.services;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import sukhrob.dev.customer_service.entities.product.Category;
 import sukhrob.dev.customer_service.mappers.CategoryMapper;
-import sukhrob.dev.customer_service.payload.CategoryRequestDTO;
 import sukhrob.dev.customer_service.repositories.CategoryRepository;
 
 @WebMvcTest
@@ -16,8 +14,6 @@ class CategoryServiceImplTest {
 
     @Test
     void get() {
-        CategoryRequestDTO categoryRequestDTO = new CategoryRequestDTO("Pizza", null);
-        Category category = categoryRepository.save(categoryMapper.mapDTOToEntity(categoryRequestDTO));
 
     }
 
